@@ -12,9 +12,10 @@ function App() {
     <Routes>
 
       <Route path="/" element={<Home/>} />
+      <Route path="/create" element={<Create/>} />
       <Route path="/read/:id" element={<Read/>} />
       <Route path="/edit/:id" element={<Edit/>} />
-      <Route path="/create" element={<Create/>} />
+
 
 
 
