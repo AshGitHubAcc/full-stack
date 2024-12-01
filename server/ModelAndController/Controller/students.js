@@ -62,7 +62,7 @@ controller.put('/students/:id',(req,res)=>{
     const sqlQuery = `
         UPDATE Students
         SET
-            first_name = ?, 
+            first_name = ?,
             last_name = ?, 
             email = ?,
             age = ?,
@@ -103,5 +103,3 @@ controller.delete(("/students/:id"),(req,res)=>{
 })
 
 export default controller
- 
-

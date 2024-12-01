@@ -4,7 +4,6 @@ import cors from 'cors'
 // Endpoints
 import studentController from './ModelAndController/Controller/students.js';
 
-
 const app = express();
 const PORT = 4000;
 app.use(cors())

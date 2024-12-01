@@ -16,9 +16,6 @@ function App() {
       <Route path="/read/:id" element={<Read/>} />
       <Route path="/edit/:id" element={<Edit/>} />
 
-
-
-
     </Routes>
     </BrowserRouter>
     

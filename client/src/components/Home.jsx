@@ -5,9 +5,18 @@ import { Link } from "react-router-dom"
 export default function Home() {
 
     const [data, setData] = useState([])
+    const [deleted, setDeleted] = useState(false)
+
 
 
     useEffect(() => {
+
+        if (deleted) {
+            setDeleted(false)
+        }
+
+
+
         fetch("http://localhost:4000/students")
         .then((res)=>{
             if (!res.ok) {
@@ -19,12 +28,12 @@ export default function Home() {
             setData(data)
         })
         .catch(error=>console.log("Fetch Error: " + error))
-    }, [])
+
+        console.log("Used effect ran")
+    }, [deleted])
 
 
     function onDelete(id) {
-
-
         fetch(`http://localhost:4000/students/${id}`,{
             method: "DELETE"
         })
@@ -32,7 +41,7 @@ export default function Home() {
             if (!response.ok) {
                 throw new Error("Failed to delete the student.")
             }
-            window.location.reload()
+            setDeleted(true)
         })
         .catch(error => console.error("Error:", error))
 
