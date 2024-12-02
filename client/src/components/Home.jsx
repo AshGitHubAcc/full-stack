@@ -11,25 +11,27 @@ export default function Home() {
 
     useEffect(() => {
 
-        if (deleted) {
-            setDeleted(false)
+        async function fetchData() {
+            if (deleted) {
+                setDeleted(false)
+            }
+    
+            try {
+                const response = await fetch("http://localhost:4000/students")
+                if (!response.ok) {
+                    throw new Error("=========Server Error========")
+                }
+
+                const jsonData = await response.json()
+                setData(jsonData)
+            }
+            catch(error) {
+                throw new Error(error)
+            }
         }
 
+        fetchData()
 
-
-        fetch("http://localhost:4000/students")
-        .then((res)=>{
-            if (!res.ok) {
-                throw new Error("HTTP Error, Status: " + res.status)
-            }
-            return res.json()
-        })
-        .then((data)=>{
-            setData(data)
-        })
-        .catch(error=>console.log("Fetch Error: " + error))
-
-        console.log("Used effect ran")
     }, [deleted])
 
 

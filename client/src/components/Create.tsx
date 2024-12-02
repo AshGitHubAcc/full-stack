@@ -37,7 +37,6 @@ export default function Create() {
         })
         .then((res)=>{
 
-            console.log(res)
             if (!res.ok) {
                 throw new Error("HTTP Error: " + res.status)
             }
