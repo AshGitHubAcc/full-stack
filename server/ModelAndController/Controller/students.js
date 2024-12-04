@@ -6,7 +6,6 @@ const controller = express.Router()
 
 controller.post('/students', (req,res)=>{
 
-
     const sqlQuery = "INSERT INTO Students (first_name, last_name, email, age, gender, undergraduate) VALUES(?,?,?,?,?,?);"
     const values = [
         req.body.first_name,
