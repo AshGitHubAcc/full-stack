@@ -33,12 +33,14 @@ export default function Home() {
         <div className="flex flex-col justify-center items-center w-[1000px] mt-20">
             <div>
                 <h1 className="text-4xl font-bold text-gray-400 mb-20">
-                    Campus List
+                    NEU Students List
                 </h1>
             </div>
 
             <div className="w-full flex justify-end my-2">
-                <Link className="bg-blue-800 text-xl text-gray-200 px-4 py-2 rounded hover:bg-blue-900" to="/add">Add +</Link>
+                <Link className="bg-blue-800 text-xl text-gray-200 px-4 py-2 rounded hover:bg-blue-900 mr-2" to="/add">Add +</Link>
+                <div className="bg-blue-800 text-xl text-gray-200 px-4 py-2 rounded hover:bg-blue-900">Filter</div>
+
             </div>
 
             <div className="flex justify-center overflow-auto max-h-[340px] rounded-lg w-[100%]">

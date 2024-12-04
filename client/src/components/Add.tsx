@@ -72,6 +72,10 @@ export default function Add() {
         setValues({...values, [type]: event.target.value})
     }
 
+    useEffect(()=>{
+        console.log(values)
+    },[values])
+
     return (
         <div className="flex flex-col justify-center items-center h-screen">
             <div >
@@ -131,8 +135,8 @@ export default function Add() {
                             <option value="select" disabled className="text-gray-400">
                                 Select...
                             </option>
-                            <option value="yes" className="text-gray-200">Yes</option>
-                            <option value="no" className="text-gray-200">No</option>
+                            <option value="Yes" className="text-gray-200">Yes</option>
+                            <option value="No" className="text-gray-200">No</option>
                         </select>
                     </div>
 

@@ -47,6 +47,8 @@ export default class StudentModel {
 
     static async addStudent(data) {
 
+        console.log("=====================================\n", data)
+
         const sqlCommand = `
             INSERT INTO Students (first_name, last_name, email, major, gpa, undergraduate)
             VALUES (?, ?, ?, ?, ?, ?);
@@ -60,14 +62,15 @@ export default class StudentModel {
             data.undergraduate === "Yes" ? true : false
         ]
 
+
         try {
             await db.query(sqlCommand, values)
         } catch (error) {
             throw new Error(`Database query error: ${error}`)
         }
     }
-
     static async updateStudent(id, data) {
+
         console.log(data)
 
         const sqlCommand = `
@@ -89,6 +92,10 @@ export default class StudentModel {
             data.undergraduate === "Yes" ? true : false,
             id
         ]
+
+        console.log(values)
+
+
 
         try {
             await db.query(sqlCommand, values)

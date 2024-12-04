@@ -25,6 +25,8 @@ export default function Edit() {
                     return setInputError("SERVER ERROR: Unable to get student data")
                 }
                 const data = await response.json()
+
+                data.undergraduate === 0 ? data.undergraduate = "No" : "Yes"
                 setValues(data)
             } catch (error) {
                 setInputError(error)
@@ -73,6 +75,8 @@ export default function Edit() {
                 },
                 body: JSON.stringify(values)
             })
+
+
     
             if (!response.ok) {
                 setInputError("SERVER ERROR: Unable to update student")
@@ -91,7 +95,6 @@ export default function Edit() {
 
 
     function onChange(event, type) {
-        console.log(type,"==========", event.target.value)
         setValues({...values, [type]: event.target.value})
     }
 
