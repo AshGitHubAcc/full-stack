@@ -4,13 +4,13 @@ export default class StudentModel {
 
     static async getAllStudents() {
         
-        const sqlCommand = 'SELECT * FROM Students;'
+        const sqlCommand = 'SELECT id, first_name, last_name, email, major, undergraduate FROM Students;'
 
         try {
             const data = await db.query(sqlCommand)
             return data[0]
         } catch (error) {
-            throw new Error(`Error when quering data from database: ${error}`)
+            throw new Error(`Database query error: ${error}`)
         }
     }
 
@@ -22,9 +22,9 @@ export default class StudentModel {
         `
         try {
             const data = await db.query(sqlCommand, [id])
-            return data[0]
+            return data[0][0]
         } catch (error) {
-            throw new Error(`Error when quering data from database: ${error}`)
+            throw new Error(`Database query error: ${error}`)
         }
         
     }
@@ -38,12 +38,62 @@ export default class StudentModel {
 
         try {
             const data = await db.query(sqlCommand,[id])
-            return data[0].affectedRows === 0 ? {studentFoundAndDeleted: false} : {studentFoundAndDeleted: true}
+            return data[0].affectedRows === 0 ? {sucess: false} : {sucess: true}
 
         } catch (error) {
-            throw new Error(`Database error ${error}`)
+            throw new Error(`Database query error: ${error}`)
+        }
+    }
+
+    static async addStudent(data) {
+
+        const sqlCommand = `
+            INSERT INTO Students (first_name, last_name, email, major, gpa, undergraduate)
+            VALUES (?, ?, ?, ?, ?, ?);
+        `
+        const values = [
+            data.first_name,
+            data.last_name,
+            data.email,
+            data.major,
+            data.gpa,
+            data.undergraduate
+        ]
+
+        try {
+            await db.query(sqlCommand, values)
+        } catch (error) {
+            throw new Error(`Database query error: ${error}`)
+        }
+    }
+
+    static async updateStudent(id, data) {
+
+        const sqlCommand = `
+            UPDATE Students
+            SET first_name = ?,
+                last_name = ?,
+                email = ?,
+                major = ?,
+                gpa = ?,
+                undergraduate = ?
+            WHERE id = ?;
+        `
+        const values = [
+            data.first_name,
+            data.last_name,
+            data.email,
+            data.major,
+            data.gpa,
+            data.undergraduate,
+            id
+        ]
+
+        try {
+            await db.query(sqlCommand, values)
+        } catch (error) {
+            throw new Error(`Database query error: ${error}`)
         }
 
-  
     }
 }
