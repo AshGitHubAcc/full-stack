@@ -38,7 +38,7 @@ export default function Home() {
             </div>
 
             <div className="w-full flex justify-end my-2">
-                <Link className="bg-blue-800 text-xl text-gray-200 px-4 py-2 rounded hover:bg-blue-900" to="/">Add +</Link>
+                <Link className="bg-blue-800 text-xl text-gray-200 px-4 py-2 rounded hover:bg-blue-900" to="/add">Add +</Link>
             </div>
 
             <div className="flex justify-center overflow-auto max-h-[340px] rounded-lg w-[100%]">
@@ -65,7 +65,7 @@ export default function Home() {
 
                                     <td className="flex justify-around px-6 py-4">
                                         <Link to={`/read/${ele.id}`} className="text-gray-300 bg-gray-500 px-3 py-2  rounded-md hover:bg-gray-600" >Read</Link>
-                                        <button className="text-gray-300 bg-gray-500 px-3 py-2 mx-2 rounded-md hover:bg-gray-600">Edit</button>
+                                        <Link to={`/edit/${ele.id}`} className="text-gray-300 bg-gray-500 px-3 py-2 mx-2 rounded-md hover:bg-gray-600">Edit</Link>
                                         <button onClick={()=>onDelete(ele.id)} className="text-gray-300 bg-gray-500 px-3 py-2  rounded-md hover:bg-gray-600">Delete</button>
                                     </td>
                                 </tr>

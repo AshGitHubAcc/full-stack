@@ -64,6 +64,7 @@ export default class StudentController {
             await StudentModel.addStudent(req.body)
             return res.status(200).json({message: "Added student"})
         } catch (error) {
+            console.log("==========", error)
             return res.status(500).json({message: `Server Error: ${error}`})
         }
     }

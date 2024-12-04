@@ -57,7 +57,7 @@ export default class StudentModel {
             data.email,
             data.major,
             data.gpa,
-            data.undergraduate
+            data.undergraduate === "Yes" ? true : false
         ]
 
         try {
@@ -68,6 +68,7 @@ export default class StudentModel {
     }
 
     static async updateStudent(id, data) {
+        console.log(data)
 
         const sqlCommand = `
             UPDATE Students
@@ -85,7 +86,7 @@ export default class StudentModel {
             data.email,
             data.major,
             data.gpa,
-            data.undergraduate,
+            data.undergraduate === "Yes" ? true : false,
             id
         ]
 
