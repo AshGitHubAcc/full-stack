@@ -14,6 +14,21 @@ export default class StudentModel {
         }
     }
 
+    static async getStudent(id) {
+
+        const sqlCommand = `
+            SELECT * FROM Students
+            WHERE id = ?;
+        `
+        try {
+            const data = await db.query(sqlCommand, [id])
+            return data[0]
+        } catch (error) {
+            throw new Error(`Error when quering data from database: ${error}`)
+        }
+        
+    }
+
     static async deleteStudent(id) {
 
         const sqlCommand = `
